@@ -5,7 +5,7 @@
 ```shell
 conda create -n tsr python=3.11 # 创建conda环境
 conda activate tsr # 使用该环境
-pip install requirements.txt # 下载相关包
+pip install -r requirements.txt # 下载相关包
 python main.py # 启动服务命令
 ```
 
