@@ -7,6 +7,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles  # 导入静态文件支持
 from routes import auth
 
 # 创建FastAPI应用实例
@@ -25,8 +26,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+static_dir = Path(__file__).parent / "static"
+app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+
 # 注册认证路由
 app.include_router(auth.router)
+
 
 @app.get("/")
 async def root():

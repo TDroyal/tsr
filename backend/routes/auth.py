@@ -81,7 +81,7 @@ def login(
         # 返回统一错误格式
         return LoginResponse(
             status=-1,
-            message="账号或密码错误",
+            message="用户名或密码错误",
             token=""
         )
 
@@ -183,6 +183,22 @@ async def get_current_user(
 
     user = db.query(User).filter(User.username == token_data.username).first()
     return user
+
+
+# 检查token是否有效的接口
+@router.post("/checktoken")
+async def check_token(current_user: User = Depends(get_current_user)):
+    if not current_user:
+        return {
+            "status": -2,  # token失效的status
+            "message": "token 无效",
+            "data": None
+        }
+    return {
+        "status": 0,
+        "message": "token 有效",
+        "data": None
+    }
 
 # 受保护的路由示例 - 获取当前用户信息
 @router.get("/me")
