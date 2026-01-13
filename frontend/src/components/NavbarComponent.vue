@@ -13,7 +13,10 @@
             <router-link class="nav-link mynav-link" :to="{name:'home'}">首页</router-link>
           </li>
           <li class="nav-item"  v-if="$store.state.user.is_login">
-            <router-link class="nav-link mynav-link" :to="{name:'task'}" v-if="$store.state.user.is_login">任务</router-link>
+            <router-link class="nav-link mynav-link" :to="{name:'forcast'}" v-if="$store.state.user.is_login">预测任务</router-link>
+          </li>
+          <li class="nav-item"  v-if="$store.state.user.is_login">
+            <router-link class="nav-link mynav-link" :to="{name:'anomalydetection'}" v-if="$store.state.user.is_login">异常检测任务</router-link>
           </li>
           <li class="nav-item"  v-if="$store.state.user.is_login">
             <router-link class="nav-link mynav-link" :to="{name:'chat'}" v-if="$store.state.user.is_login">智能时序问答助手</router-link>

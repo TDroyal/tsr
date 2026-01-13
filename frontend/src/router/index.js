@@ -1,8 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
-import TaskView from '../views/TaskView.vue'
-import QAView from '../views/QAView'
+import ForcastTaskView from '../views/ForcastTaskView.vue'
+import QAView from '../views/QAView.vue'
+import AnomalyDetectionTaskView from '../views/AnomalyDetectionTaskView.vue'
 const routes = [
   {
     path: '/',
@@ -15,9 +16,14 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/task',
-    name: 'task',
-    component: TaskView
+    path: '/forcast',
+    name: 'forcast',
+    component: ForcastTaskView
+  },
+  {
+    path: '/anomalydetection',
+    name: 'anomalydetection',
+    component: AnomalyDetectionTaskView
   },
   {
     path: '/chat',

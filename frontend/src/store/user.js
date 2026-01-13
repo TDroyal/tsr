@@ -53,7 +53,7 @@ const ModuleUser = {
                 }
                 const token = resp.token
                 const token_obj = jwtDecode(token)
-                console.log(token, token_obj)
+                // console.log(token, token_obj)
 
                 context.commit("updateUser", {  //传入mutations中的方法名称和参数data
                     user_id: token_obj.user_id,
