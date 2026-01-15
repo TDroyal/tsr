@@ -1,7 +1,7 @@
 # 时序项目启动！！！
 
 ## backend
-启动命令
+### 启动命令
 ```shell
 conda create -n tsr python=3.11 # 创建conda环境
 conda activate tsr # 使用该环境
@@ -9,11 +9,17 @@ pip install -r requirements.txt # 下载相关包
 python run.py # 启动服务命令
 ```
 
-注意：
+### 注意：
 ```python
-# routes/chat.py下面的DEEPSEEK_API_KEY 需要改为自己的llm token。
+# backend/routes/chat.py下面的DEEPSEEK_API_KEY 需要改为自己的llm token。
 DEEPSEEK_API_KEY = "my token"
+
+# 修改mysql的配置 账号密码等 在backend/dao/database.py下面
+SQLALCHEMY_DATABASE_URL = "mysql+pymysql://your-username:your-password@127.0.0.1/your-database-name"
 ```
+### 模型下载：
+你可以在[Google Drive](https://drive.google.com/drive/folders/1UlcATyAnMxuVdjWuROoopvEteEre_aOo)下载项目必须的相关算法，下载并解压命名为`algorithm`，然后将这整个文件夹放在`backend`目录下，即`backend/algorithm`。
+
 
 ## frontend
 vue3 项目 npm管理依赖
