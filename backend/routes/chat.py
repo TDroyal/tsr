@@ -526,10 +526,12 @@ async def anomaly_detection(dataname: str) -> dict:
             "success": True,
             "message": f"在数据集 {dataname} 上成功完成异常检测",
             "threshold": threshold,
-            "origin_data": origin_data_dim0,
-            "reconstruction_data": reconstruction_data_dim0,
-            "anomaly_score": anomaly_score_dim0,
-            "pred_labels": pred_labels,
+            ###############下面数据太大了，喂给大模型要吃瘪###############
+            # "origin_data": origin_data_dim0,
+            # "reconstruction_data": reconstruction_data_dim0,
+            # "anomaly_score": anomaly_score_dim0,
+            # "pred_labels": pred_labels,
+            ###############
             "stats": stats,
             "chart_type": "anomaly_detection",
             "chart_base64": chart_base64
@@ -647,6 +649,10 @@ async def chat(
                 tool_result_with_description["chart_description"] = "已生成预测结果图表，包含历史数据、预测数据和真实数据的对比。"
             elif tool_name == "anomaly_detection":
                 tool_result_with_description["chart_description"] = "已生成异常检测结果图表，包含原始数据、重构数据、异常分数和异常区域标识。"
+
+        if tool_name == "anomaly_detection":
+            # 删除图像 base64，避免喂给大模型（给大模型的输入过大，会总结失败）
+            tool_result_with_description.pop("chart_base64", None)
 
         messages.append({
             "role": "tool",
